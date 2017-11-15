@@ -1,0 +1,40 @@
+body {
+    width: 100%;
+    display: flex;
+    margin: auto;
+    flex-flow: row wrap;
+}
+
+header {
+    width: 100%;
+}
+
+header img {
+    width: inherit;
+}
+
+div#checkbox {
+    margin-left: 1%;
+    width: 20%;
+    height: 20%;
+    border-style: solid;
+    border-color: gold;
+    margin-top: 10%;
+    padding-bottom: 2%;
+}
+
+div#checkbox h2 {
+    
+    text-align: center;
+    text-decoration: underline;
+}
+
+div#checkbox label {
+    margin-left: 15%;
+    width: 20%;
+}
+
+div#calendar {
+    margin-left: 1%;
+    width: 75%;
+}
