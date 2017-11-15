@@ -2,10 +2,13 @@ $(document).ready(function() {
     
       $('#calendar').fullCalendar({
 
+        // if an Academic event is selected, set the event's color to red. 
         eventRender: function(events,element) {
-            if(events.type == 'normal') {
+            if(events.type == 'Academic') {
                 element.css('background-color','red');
             }
+
+            return filter(events);
         },
 
   
@@ -23,8 +26,7 @@ $(document).ready(function() {
                   
           },
   
- // https://stackoverflow.com/questions/36841659/filtering-fullcalendar-events-with-checkboxes-client-side-with-javascript 
-  
+   
  events: [{
   start: '2017-11-05',
   title: 'Example 1',
@@ -34,17 +36,34 @@ $(document).ready(function() {
 {
   start: '2017-11-14',
   title: 'Example 2',
-  type: 'normal'
+  type: 'Academic'
 }, 
 
 {
   start:'2017-11-28',
   title: 'Example 3',
   type: 'not-normal'
-}]
+}],
 
-  
-  
+
+      });
+
+       /* When a checkbox changes, re-render events */
+       // jQuery to select checkboxes of class 'eventFilter'.
+       // when a change occurs (ie. when you check or uncheck the box, something should
+       // change visually on the screen.
+       $('input:checkbox.eventFilter').on('change', function() {
+        $('#calendar').fullCalendar('rerenderEvents');
       });
   
     });
+
+
+    // function to filter events based on type. 
+    function filter(calEvents) {
+      var vals = [];
+      $('input:checkbox.eventFilter:checked').each(function() {
+        vals.push($(this).val());
+      });
+      return vals.indexOf(calEvents.type) !== -1;
+    }
