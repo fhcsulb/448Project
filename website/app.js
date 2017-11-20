@@ -8,6 +8,32 @@ $(document).ready(function() {
                 element.css('background-color', '#6495ED');
             }
 
+            if(events.type == 'Arts & Culture') {
+              element.css('background-color', '#FF9300');
+          }
+
+          if(events.type == 'Athletics & Recreation') {
+            element.css('background-color', '#1BFF00');
+        }
+
+        if(events.type == 'CampusLife') {
+          element.css('background-color', '#BB3358');
+      }
+
+      if(events.type == 'Community') {
+        element.css('background-color', '#FAD69A');
+    }
+
+
+    if(events.type == 'Meeting/Lecture/Workshop') {
+      element.css('background-color', '#FA9AF6');
+  }
+    
+        
+        
+        
+
+
             return filter(events);
         },
        
@@ -38,7 +64,7 @@ $(document).ready(function() {
   start: '2017-11-20 13:00',
   end: '2017-11-20 16:00',
   title: 'Example 2',
-  type: 'Academic',
+  type: 'Meeting/Lecture/Workshop',
   
 }, 
 
