@@ -18,7 +18,7 @@ div#checkbox {
     width: 20%;
     height: 20%;
     border-style: solid;
-    border-color: rgba(255, 0, 0, 0.788);
+    border-color: rgba(0, 0, 0, 0.788);
     margin-top: 10%;
     padding-bottom: 2%;
 }
@@ -30,7 +30,7 @@ div#checkbox h2 {
 }
 
 div#checkbox label {
-    margin-left: 15%;
+    margin-left: 3%;
     width: 20%;
 }
 
@@ -38,3 +38,37 @@ div#calendar {
     margin-left: 1%;
     width: 75%;
 }
+
+
+div.legend{
+    float: right;
+    width: 10px;
+    height: 10px;
+    margin-right: 8%;
+    border: 1px solid;
+}
+
+.academic {
+    background: #6495ED;
+}
+
+.art-culture {
+    background: #FF9300;
+}
+
+.athletic-recreation {
+    background: #1BFF00;
+}
+
+.campus-life {
+    background: #BB3358;
+}
+
+.community {
+    background: #FAD69A;
+}
+
+.meet-lec-work {
+    background: #FA9AF6;
+}
+
