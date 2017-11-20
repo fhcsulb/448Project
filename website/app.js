@@ -2,17 +2,17 @@ $(document).ready(function() {
     
       $('#calendar').fullCalendar({
 
-        // if an Academic event is selected, set the event's color to red. 
+        // if an Academic event is selected, set the event's color
         eventRender: function(events,element) {
             if(events.type == 'Academic') {
-                element.css('background-color','red');
+                element.css('background-color', '#6495ED');
             }
 
             return filter(events);
         },
-
-  
-        handleWindowResize: true,  
+       
+       themeSystem:'jquery-ui',
+        
         weekends: true,
           defaultView: 'month',
 
@@ -27,23 +27,22 @@ $(document).ready(function() {
           },
   
    
- events: [{
-  start: '2017-11-05',
-  title: 'Example 1',
-  type: 'normal'
-}, 
-
-{
-  start: '2017-11-14',
+ events: [ {
+  start: '2017-11-20 10:00',
+  end: '2017-11-20 17:00',
   title: 'Example 2',
   type: 'Academic'
 }, 
 
 {
-  start:'2017-11-28',
-  title: 'Example 3',
-  type: 'not-normal'
-}],
+  start: '2017-11-20 13:00',
+  end: '2017-11-20 16:00',
+  title: 'Example 2',
+  type: 'Academic',
+  
+}, 
+
+],
 
 
       });
@@ -67,3 +66,5 @@ $(document).ready(function() {
       });
       return vals.indexOf(calEvents.type) !== -1;
     }
+
+    // things to implement, when you click on an event, it should have a pop-up 
