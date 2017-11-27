@@ -6,6 +6,7 @@ $(document).ready(function() {
         eventRender: function(events,element) {
             if(events.type == 'Academic') {
                 element.css('background-color', '#FF8ECB');
+                
             }
 
             if(events.type == 'Arts & Culture') {
@@ -16,7 +17,7 @@ $(document).ready(function() {
             element.css('background-color', '#FFC28E');
         }
 
-        if(events.type == 'CampusLife') {
+        if(events.type == 'Campus Life') {
           element.css('background-color', '#A7FF8E');
       }
 
@@ -37,7 +38,8 @@ $(document).ready(function() {
             return filter(events);
         },
        
-       themeSystem:'jquery-ui',
+       // themeSystem:'jquery-ui',
+       
         
         weekends: true,
           defaultView: 'month',
@@ -3603,175 +3605,175 @@ $(document).ready(function() {
   start: '2017-12-01 06:00',
   end: '2017-12-01',
   title: 'Blind to History: Public Art Installation',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-01 12:00',
   end: '2017-12-01',
   title: 'Jumma Prayer',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-01 15:00',
   end: '2017-12-01',
   title: 'Graduate Studies - General Info Session',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-01 15:30',
   end: '2017-12-01',
   title: 'Forty-Niner Shops Holiday Party',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-01 10:00',
   end: '2017-12-01',
   title: 'HIV Mobile Unit (LB Health Dept.)',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-05 11:00',
   end: '2017-12-05',
   title: 'PAUSE Outreach',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-06 12:00',
   end: '2017-12-06',
   title: 'Noon Concert',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-06 13:00',
   end: '2017-12-06',
   title: 'CABO',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-06 17:30',
   end: '2017-12-06',
   title: 'Night of Relaxation',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-07 09:00',
   end: '2017-12-07',
   title: 'CABO',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-08 10:00',
   end: '2017-12-08',
   title: 'CSU Ocean Studies Institute Workshop',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-08 10:30',
   end: '2017-12-08',
   title: 'CA Mini Corps Professional Development',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-08 12:00',
   end: '2017-12-08',
   title: 'Jumma Prayer',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-08 15:00',
   end: '2017-12-08',
   title: 'Graduate Studies - General Info. Session',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-09 15:00',
   end: '2017-12-09',
   title: 'Ethnic Studies Conference',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-13 07:00',
   end: '2017-12-13',
   title: 'Finals Week',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-14 07:00',
   end: '2017-12-14',
   title: 'Finals Week',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-15 07:00',
   end: '2017-12-15',
   title: 'Finals Week',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-15 15:00',
   end: '2017-12-15',
   title: 'CED Graduate Programs Community Development',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-16 07:00',
   end: '2017-12-16',
   title: 'Finals Week',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-17 07:00',
   end: '2017-12-17',
   title: 'Finals Week',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-18 07:00',
   end: '2017-12-18',
   title: 'Finals Week',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-19 07:00',
   end: '2017-12-19',
   title: 'Finals Week',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-19 12:00',
   end: '2017-12-19',
   title: 'CLA Luncheon',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
   start: '2017-12-20 12:00',
   end: '2017-12-20',
   title: 'CLA Luncheon',
-  type: 'CampusLife'
+  type: 'Campus Life'
 },
 
 {
