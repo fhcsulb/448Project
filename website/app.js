@@ -5,29 +5,29 @@ $(document).ready(function() {
         // if an Academic event is selected, set the event's color
         eventRender: function(events,element) {
             if(events.type == 'Academic') {
-                element.css('background-color', '#FF8ECB');
+                element.css('background-color', '#E6194B');
                 
             }
 
             if(events.type == 'Arts & Culture') {
-              element.css('background-color', '#FF8E93');
+              element.css('background-color', '#3CB44B');
           }
 
           if(events.type == 'Athletics & Recreation') {
-            element.css('background-color', '#FFC28E');
+            element.css('background-color', '#AA6E28');
         }
 
         if(events.type == 'Campus Life') {
-          element.css('background-color', '#A7FF8E');
+          element.css('background-color', '#0082C8');
       }
 
       if(events.type == 'Community') {
-        element.css('background-color', '#8E96FF');
+        element.css('background-color', '#F58231');
     }
 
 
     if(events.type == 'Meeting/Lecture/Workshop') {
-      element.css('background-color', '#BE8EFF');
+      element.css('background-color', '#991EB4');
   }
     
         
