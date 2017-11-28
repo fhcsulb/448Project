@@ -1,0 +1,143 @@
+(function($) {
+  Drupal.behaviors.lb_explore = {
+    cleanLink: function() {
+      $("a.linkhref-processed").each(function() {
+        //$(this).removeAttr('tabindex');
+        $(this).unbind('click');
+        $(this).off('click');
+        $(this).click(function(event) {
+          event.preventDefault();
+          if ($(this).attr('data-linkhref').indexOf('http://www.csulb.edu') == -1) {
+            var win = window.open($(this).attr('data-linkhref'), '_blank');
+            win.focus();
+          }
+          else {
+            window.location.href = $(this).attr('data-linkhref');
+          }
+        });
+      });
+    },
+
+    attach: function(context, settings) {
+      // Wait for the document to be ready.
+      $(function() {
+
+        var $exploreContainer = $(".explore-view .view-content");
+
+        if ($exploreContainer.hasClass("explore-processed") || $(window).width() < 768) {
+          return;
+        }
+
+        // initalize the options for the explore block.
+        // some of these values are left over from when the block was going to
+        // propetually animate.
+        var initialSpeed = 10;
+        var speed = initialSpeed;
+        var direction = -1;
+        var width = $(window).width();
+        var initialElements = [];
+        var columnWidth = 440;
+
+        // initalize packery
+        $exploreContainer.packery( {
+          "isHorizontal": true
+        });
+
+        $exploreContainer.find("a").each(function() {
+          var blockContent = $('.homepage-explore-block .content');
+          blockContent.prepend('<a tabindex="' + $(this).attr('tabindex') + '" href="' + $(this).attr('href') + '" class="element-invisible element-focusable">' + $(this).text() + '</a>');
+          $(this).attr('data-linkhref', $(this).attr('href'));
+          $(this).attr('href', '');
+          $(this).addClass('linkhref-processed');
+          Drupal.behaviors.lb_explore.cleanLink();
+          setTimeout(function() {
+            Drupal.behaviors.lb_explore.cleanLink();
+          }, 1000);
+        });
+        //Add tabindex -1 to all the links inside explorer
+        //Add tabindex 0 to all the links inside explorer
+        $('#block-bean-explore-homepage-block .explore-view .view-content a').attr('tabindex', '0');
+        //Except one div, mark all div aria-hidden=true so screen reader does not confused with duplicate elements
+        $exploreContainer.wrap('<div class="dragging-container"></div>').attr('aria-hidden', 'true');
+
+        var $draggingContainer = $(".dragging-container");
+
+        $draggingContainer.append($exploreContainer.clone());
+        $draggingContainer.append($exploreContainer.clone());
+        $draggingContainer.append($exploreContainer.clone());
+        $draggingContainer.append($exploreContainer.clone());
+        $draggingContainer.append($exploreContainer.clone());
+        $draggingContainer.append($exploreContainer.clone());
+        $draggingContainer.append($exploreContainer.clone());
+        $draggingContainer.prepend($exploreContainer.clone());
+        $draggingContainer.prepend($exploreContainer.clone());
+        $draggingContainer.prepend($exploreContainer.clone());
+        $draggingContainer.prepend($exploreContainer.clone());
+        $draggingContainer.prepend($exploreContainer.clone());
+        $draggingContainer.prepend($exploreContainer.clone());
+
+        $draggingContainer.find("a").on('click', function(e) {
+          e.preventDefault();
+          window.location = $(this).data('linkhref');
+        });
+
+        // Make the container draggable
+        $draggingContainer.draggable({
+          'axis': 'x',
+          // Add a start event listener to center the draggable container
+          // if dragging can expose a blank segment.
+          'start': function() {
+            if ((parseInt($draggingContainer.css("left")) + parseInt(width * 3)) > 0 || (parseInt($draggingContainer.css("left"))) > 0) {
+              // the left css cannot be edited while dragging is happening
+              // in order to fix this we have to edit the left attributes
+              // that are internal to the ui draggable mechanism. These
+              // attributes are based on something else so the value that we
+              // set them to must be relative to itself.
+              $(this).data().uiDraggable.offset.click.left = $(this).data().uiDraggable.offset.click.left + ($exploreContainer.width() * 2);
+
+            }
+            else if ((parseInt($draggingContainer.css("left")) + (parseInt(width) * -1)) < ($exploreContainer.width() * -1)) {
+              $(this).data().uiDraggable.offset.click.left = $(this).data().uiDraggable.offset.click.left - ($exploreContainer.width() * 2);
+
+            }
+          }
+         });
+
+        // Add the navigation
+        $(".explore-view").append('<ul class="explore-controlles"><li><a class="back">Previous Explore slides</a></li><li><a class="forward">Next Explore slides</a></li></ul>');
+
+        // when the nav is clicked the element should move
+        $(".explore-controlles li a").click( function() {
+          if ($(this).hasClass("back")) {
+            // check to see if an animation will show a blank space will then
+            // move back one segment before the animation this will allow the
+            // animation to run and not show any blank segments.
+            if ((parseInt($draggingContainer.css("left")) + parseInt(width/2)) > 0) {
+              $draggingContainer.css("left", parseInt($draggingContainer.css("left")) - $exploreContainer.width());
+            }
+
+            $draggingContainer.stop().animate({
+              "left": "+=" + parseInt(width/2)
+            }, 500 );
+          }
+          else if ($(this).hasClass("forward")) {
+            // once again check the if the animation will show a blank segment
+            // if it will then move back a segement before animating.
+            if ((parseInt($draggingContainer.css("left")) + parseInt(width/-2)) < ($exploreContainer.width() * -2)) {
+              $draggingContainer.css("left", parseInt($draggingContainer.css("left")) + $exploreContainer.width());
+            }
+
+            $draggingContainer.stop().animate({
+              "left": "+=" + parseInt(width/-2)
+            }, 500 );
+          }
+        });
+
+        // Start at a quarter of a screen in.
+        $draggingContainer.css("left", ((width/-4) + columnWidth) - $exploreContainer.width());
+        // Set aria-hidden=false so only single element is accessible in screen reader
+        $exploreContainer.addClass("explore-processed").attr('aria-hidden', 'false');
+      });
+    }
+  };
+})(jQuery);

@@ -1,0 +1,37 @@
+(function($) {
+  Drupal.behaviors.lb_callouts = {
+    attach: function(context, settings) {
+      // Wait for the document to be ready.
+      $(function() {
+        var $tabs = $(".tabs-slides-controles li");
+
+        for (var i = 0; i < $tabs.length; i++) {
+          $($tabs[i]).data('slide', i);
+        }
+
+        $tabs.once(function () {
+          var tab = this;
+
+          $(this).hover(function () {
+            if (!$(tab).hasClass("active")) {
+              $(".tabs-slides-controles li.active").removeClass("active");
+              $("#tabs-slides").data('flexslider').flexAnimate($(tab).data('slide'), true, true);
+              $(tab).addClass("active");
+            }
+          });
+        });
+
+        $($tabs).first(function () {
+          $(this).addClass("active");
+        });
+
+        $tabSlides = $(".tabs-slides .flexslider").data('flexslider');
+        $(".tabs-slides .flexslider").bind("after", function(e, slider) {
+          var slide = $tabSlides.currentSlide;
+          $(".tabs-slides-controles li.active").removeClass("active");
+          $($tabs[slide]).addClass("active");
+        });
+      });
+    }
+  };
+})(jQuery);
