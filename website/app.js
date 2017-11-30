@@ -1,61 +1,91 @@
 $(document).ready(function() {
-    
+	var tooltip = $('<div/>').qtip({
+		id: 'fullcalendar',
+		prerender: true,
+		content: {
+			text: ' ',
+			title: {
+				button: true
+			}
+		},
+		position: {
+			my: 'bottom center',
+			at: 'top center',
+			target: 'event',
+			viewport: $('#calendar'),
+			adjust: {
+				mouse: true,
+				scroll: true
+			}
+		},
+		show: false,
+		hide: false,
+		style: 'qtip-light'
+	}).qtip('api');	
+	
       $('#calendar').fullCalendar({
-
+		  
         // if an Academic event is selected, set the event's color
         eventRender: function(events,element) {
             if(events.type == 'Academic') {
-                element.css('background-color', '#FF8ECB');
-                
+                element.css('background-color', '#FF8ECB');  
             }
 
             if(events.type == 'Arts & Culture') {
-              element.css('background-color', '#FF8E93');
-          }
+				element.css('background-color', '#FF8E93');
+			}
 
-          if(events.type == 'Athletics & Recreation') {
-            element.css('background-color', '#FFC28E');
-        }
+			if(events.type == 'Athletics & Recreation') {
+				element.css('background-color', '#FFC28E');
+			}
 
-        if(events.type == 'Campus Life') {
-          element.css('background-color', '#A7FF8E');
-      }
+			if(events.type == 'Campus Life') {
+				element.css('background-color', '#A7FF8E');
+			}
 
-      if(events.type == 'Community') {
-        element.css('background-color', '#8E96FF');
-    }
+			if(events.type == 'Community') {
+				element.css('background-color', '#8E96FF');
+			}
 
-
-    if(events.type == 'Meeting/Lecture/Workshop') {
-      element.css('background-color', '#BE8EFF');
-  }
+			if(events.type == 'Meeting/Lecture/Workshop') {
+				element.css('background-color', '#BE8EFF');
+			}
     
-        
-        
-        
-
 
             return filter(events);
         },
+		
        
        // themeSystem:'jquery-ui',
        
         
         weekends: true,
-          defaultView: 'month',
+        defaultView: 'month',
 
           
   
-          header: {
-              left: 'prev,next',
-                  center: 'title',
-                  right : 'basicDay,basicWeek,month,listMonth'
-              
-                  
-          },
+        header: {
+            left: 'prev,next',
+            center: 'title',
+            right : 'basicDay,basicWeek,month,listMonth'        
+        },
   
-   
- events: [ 
+		eventClick: function(data, jsEvent, view) {
+			var content = '<h3>'+data.title+'</h3>' + 
+				'<p><b>Start:</b> '+ data.start.toString() +'<br />' + 
+				(data.end.toString() && '<p><b>End:</b> '+data.end.toString()+'</p>' || '');
+					
+				tooltip.set({
+				'content.text': content
+			})
+			.reposition(jsEvent).show(jsEvent);		
+		},
+		dayClick: function() { tooltip.hide() },
+		eventResizeStart: function() { tooltip.hide() },
+		eventDragStart: function() { tooltip.hide() },
+		viewDisplay: function() { tooltip.hide() },
+		
+events: [ 
 //OCTOBER//
 
  {
@@ -4260,7 +4290,6 @@ $(document).ready(function() {
 
 
 ],
-
 
       });
 
