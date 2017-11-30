@@ -1,0 +1,44 @@
+/**
+ * @file
+ */
+(function ($) {
+  "use strict";
+  Drupal.slick = Drupal.slick || {};
+
+  // Turn off current video if the slide changes, e.g. by dragging the slide.
+  Drupal.slick.callbacks.onAfterChange = function (slider, index) {
+	  var t = '#' + slider.$slider.attr('id');
+    if ($(t).hasClass('slick--display--main')) {
+      $('.media-icon--close', t).trigger('click.media-close');
+    }
+    // Rebuild slick.load.js onAfterChange, since overriden by this one,
+    // and we only have one onAfterChange.
+    Drupal.slick.setCurrent(t, index);
+	  
+	  $('.view-articles #slick-1 .slick__slide').attr('aria-hidden', true);
+    $('.view-articles #slick-1 .slick__slide.slick-active').attr('aria-hidden', false);
+  };
+  
+  Drupal.slick.callbacks.onInit = function (slider) {
+	  $('.view-articles #slick-1 .slick-cloned .view-mode-narrow_listing .field a').attr('aria-hidden', true);
+    $('.view-articles #slick-1 .slick__slide').attr('aria-hidden', true);
+    $('.view-articles #slick-1 .slick__slide.slick-active').attr('aria-hidden', false);
+    $('.view-articles #slick-1 .slick-cloned .view-mode-narrow_listing .field a').attr('tabindex', '-1');
+    $('.view-articles #slick-1 .view-mode-narrow_listing .article-thumbnail a').attr('aria-hidden', true);
+    $('.view-articles #slick-1 .view-mode-narrow_listing .article-thumbnail a').attr('tabindex', '-1');
+	};
+	
+	/**
+	 * E.g.: Applies a css border to all Slick onReInit.
+	 */
+	Drupal.slick.callbacks.onReInit = function (slider) {
+	  $('.view-articles #slick-1 .slick-cloned .view-mode-narrow_listing .field a').attr('aria-hidden', true);
+    $('.view-articles #slick-1 .slick__slide').attr('aria-hidden', true);
+    $('.view-articles #slick-1 .slick__slide.slick-active').attr('aria-hidden', false);
+    $('.view-articles #slick-1 .slick-cloned .view-mode-narrow_listing .field a').attr('tabindex', '-1');
+    $('.view-articles #slick-1 .view-mode-narrow_listing .article-thumbnail a').attr('aria-hidden', true);
+    $('.view-articles #slick-1 .view-mode-narrow_listing .article-thumbnail a').attr('tabindex', '-1');
+	};
+
+
+})(jQuery);

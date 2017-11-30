@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <link rel='stylesheet' href='fullcalendar-3.6.2/fullcalendar.css' />
+    <link rel='stylesheet' href='style.css' />
+  
+    
+    <script src='fullcalendar-3.6.2/lib/jquery.min.js'></script>
+    <script src='fullcalendar-3.6.2/lib/moment.min.js'></script>
+    <script src='fullcalendar-3.6.2//fullcalendar.js'></script>
+    <script src="app.js" type="text/javascript"></script>
+   
+
+  </head>
+
+  <body>
+    <header>
+          <img src = "images/header.png">
+    </header>
+
+
+    <div id = "checkbox">
+        <h2> Event Filter </h2>
+        <label>
+            <input class = 'eventFilter' type = "checkbox" value = "Academic"  checked> Academic
+            <div class="legend academic"></div>
+
+       </label>
+
+       <br>
+
+       <label>
+          <input class = 'eventFilter' type = "checkbox" value = "Arts & Culture"  > Arts & Culture
+          <div class="legend art-culture"></div>
+        </label>
+
+      <br>
+
+      <label>
+          <input class = 'eventFilter' type = "checkbox" value = "Athletics & Recreation"  > Athletics & Recreation
+          <div class="legend athletic-recreation"></div>
+      </label>
+
+     <br>
+
+     <label>
+        <input class = 'eventFilter' type = "checkbox" value = "Campus Life"  > Campus Life
+        <div class="legend campus-life"></div>
+    </label>
+
+     <br>
+
+  <label>
+     <input class = 'eventFilter' type = "checkbox" value = "Community"  > Community
+     <div class="legend community"></div>
+  </label>
+
+    <br>
+
+    <label>
+        <input class = 'eventFilter' type = "checkbox" value = "Meeting/Lecture/Workshop"  > Meeting/Lecture/Workshop
+        <div class="legend meet-lec-work"></div>
+    </label>
+
+
+
+
+
+
+
+    </div>
+    <div id="calendar"></div>
+
+  
+
+    
+  </body>
+</html>
